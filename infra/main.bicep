@@ -10,6 +10,8 @@ param location string
 param sqlServerName string = ''
 param databaseName string = ''
 
+param localEnvIpAddress string
+
 @secure()
 param sqlAdminPassword string
 @secure()
@@ -31,7 +33,7 @@ module sqlServer 'app/db.bicep' = {
     name: !empty(sqlServerName) ? sqlServerName : 'sql-${suffix}'
     databaseName: databaseName
     location: location
-    localEnvIpAddress: '{Your local ip address}'
+    localEnvIpAddress: localEnvIpAddress
     sqlAdminPassword: sqlAdminPassword
     appUserPassword: appUserPassword
     tags: tags
